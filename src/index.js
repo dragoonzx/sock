@@ -16,6 +16,9 @@ io.sockets.on('connection', function (socket) {
 		a[0] += 1;
 		console.log(a);
 		console.log(data);
+		
+		io.on('connection',(socket)=> socket.disconnect(true));
+		console.log('u was disco');
 		socket.emit('eventClient', { data: 'Hello Client' + data.time });
 	});
 	socket.on('disconnect', function () {
