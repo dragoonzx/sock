@@ -30,12 +30,13 @@
 	
   function clickMe(){
     socket.emit('eventServer', {id: 1, time: (new Date()).valueOf()});
-    socket.on('eventClient', function (data) {
-    console.log('client');
-		console.log(data);
-	  });
+    
   
   };
+  socket.on('eventClient', function (data) {
+    console.log('client');
+		console.log(data);
+	});
   
 </script>
     <title>React App</title>
