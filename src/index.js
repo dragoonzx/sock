@@ -9,12 +9,10 @@ app.get('/', function(req, res){
 
 io.sockets.on('connection', function (socket) {
 	socket.on('eventServer', function (data) {
-		console.log('user connnected');
-		if (a[0]=== 0 ){
-
-		}
+		console.log('user connected');
+		io.emit('eventClient', { for: 'everyone', data: 'sosite chlen' });
 		console.log(a);
-		a += 1;
+		a[0] += 1;
 		console.log(a);
 		console.log(data);
 		socket.emit('eventClient', { data: 'Hello Client' + data.time });
