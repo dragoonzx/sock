@@ -33,6 +33,11 @@
     
   
   };
+  function discoMe(){
+    io.on('connection',(socket)=> socket.disconnect(true));
+    console.log('u was disco');
+  };
+
   socket.on('eventClient', function (data) {
     console.log('client');
     console.log(data);
@@ -48,6 +53,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">KEK</div>
     <div><button onclick="clickMe()">123</button></div>
+    <div><button onclick="discoMe()">discon</button></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
