@@ -33,10 +33,7 @@
     socket = io.connect('http://80.78.255.120:8000/');
     socket.emit('eventServer', {id: i++, time: (new Date()).valueOf()});
     
-  
-  };
-
-  socket.on('eventClient', function (data) {
+    socket.on('eventClient', function (data) {
     console.log('client');
     console.log(data);
 		socket.disconnect();
@@ -44,6 +41,9 @@
 		console.log('user disconnected');
 	});
 	});
+  };
+
+  
   
 </script>
     <title>React App</title>
