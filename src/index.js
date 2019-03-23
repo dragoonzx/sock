@@ -14,10 +14,10 @@ io.sockets.on('connection', function (socket) {
 
 		}
 		console.log(a);
-		a = 1;
+		a += 1;
 		console.log(a);
 		console.log(data);
-		socket.emit('eventClient', { data: 'Hello Client' });
+		socket.emit('eventClient', { data: 'Hello Client' + data.time });
 	});
 	socket.on('disconnect', function () {
 		console.log('user disconnected');
