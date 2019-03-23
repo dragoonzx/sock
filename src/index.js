@@ -15,7 +15,6 @@ io.sockets.on('connection', function (socket) {
 		a[0] += 1;
 		console.log(a);
 		console.log(data);
-		console.log(Object.values(io.of("/").connected));
 		socket.emit('eventClient', { data: 'Hello Client' + data.time });
 	});
 	socket.on('disconnect', function () {
