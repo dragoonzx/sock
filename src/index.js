@@ -18,7 +18,7 @@ console.log(data);
 if (a == false) {
 	console.log(1);
 a.push({info:data.info,time: data.time});
-}else if (a[0].time > data.time - 5000) {
+}else if (a[0].time > data.time - 3500) {
 	console.log(2);
 a.push({info:data.info,time:data.time});
 }else {
