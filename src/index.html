@@ -26,11 +26,11 @@
     
 <script>
   
-  var socket = io.connect('http://80.78.255.120:8000/');
+  var socket = io.connect('http://improveyourself.ru/');
  
 	var i = 1;
   function clickMe(){
-    socket = io.connect('http://80.78.255.120:8000/');
+    socket = io.connect('http://improveyourself.ru/');
     socket.emit('eventServer', {id: i++, time: (new Date()).valueOf()});
     
     socket.on('eventClient', function (data) {
