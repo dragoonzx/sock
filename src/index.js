@@ -1,47 +1,41 @@
-var express = require('express')();
-//var http = require('http').Server(app);
-var https = require('https').Server(app);
-//var io = require('socket.io')(http);
-const fs = require('fs');
-var io = require('socket.io')(https);
-var app = express();
-var a = [0,0];
+var app = require('express')();
+var http = require('http').Server(app);
+//var https = require('https').Server(app);
+var io = require('socket.io')(http);
+//var io = require('socket.io')(https);
+var a = [];
 
-const options = {
-	key: fs.readFileSync('your_domain.key'),
-	cert: fs.readFileSync('your_domain.crt')
-  };
-
-express.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+app.get('/', function(req, res){
+res.sendFile(__dirname + '/index.html');
 });
 
 io.sockets.on('connection', function (socket) {
-	socket.on('eventServer', function (data) {
-		
-		console.log('user connected'+ socket.id);
-		io.emit('eventClient', { for: 'everyone', data: 'sosite chlen' });
-		console.log(a);
-		a[0] += 1;
-		console.log(a);
-		console.log(data);
-		
-		console.log('u was disco');
-		socket.emit('eventClient', { data: 'Hello Client' + data.time });
-	});
-	socket.on('disconnect', function () {
-		console.log('user disconnected');
-	});
+socket.on('eventServer', function (data) {
+
+console.log('user connected '+ socket.id);
+// io.emit('eventClient', { for: 'everyone', data: 'sosite chlen' });
+console.log(data);
+if (a == false) {
+a.push({data:data.info,time: data.time});
+}else if (a[0].time < data.time - 2000) {
+a.push({data:data.info,time:data.time});
+}else {
+a.push({});
+io.emit('eventClient', { data: a, message: 'передача закончилась' });
+}
+// console.log('u was disco');
+// socket.emit('eventClient', { data: 'Hello Client' + data.time });
+});
+socket.on('disconnect', function () {
+console.log('user disconnected');
+});
 });
 
-/*http.listen(8000, function(){
-	console.log('listening on *:8000');
-	
-});*/
-var http = http.createServer(app);
-register(http);
-http.listen(80);
+http.listen(8000, function(){
+console.log('listening on *:8000');
 
-var https = https.createServer(app, { key: fs.readFileSync('your_domain.key'), cert: fs.readFileSync('your_domain.crt') });
-register(https);
-https.listen(443);
+});
+// https.listen(8000, function(){
+// console.log('listening ssl on *:8000');
+
+// });
