@@ -12,7 +12,7 @@ const options = {
 	cert: fs.readFileSync('your_domain.crt')
   };
 
-app.get('/', function(req, res){
+express.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
