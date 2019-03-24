@@ -1,5 +1,5 @@
 var app = require('express')();
-var http = require('http').Server(app);
+var https = require('https').Server(app);
 var io = require('socket.io')(http);
 var a = [0,0];
 
@@ -25,7 +25,7 @@ io.sockets.on('connection', function (socket) {
 	});
 });
 
-http.listen(8000, function(){
+https.listen(8000, function(){
 	console.log('listening on *:8000');
 	
 });
