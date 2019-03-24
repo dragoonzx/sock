@@ -1,8 +1,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var https = require('https').Server(app);
+//var https = require('https').Server(app);
 var io = require('socket.io')(http);
-var io = require('socket.io')(https);
+//var io = require('socket.io')(https);
 var a = [0,0];
 
 app.get('/', function(req, res){
@@ -31,7 +31,7 @@ http.listen(8000, function(){
 	console.log('listening on *:8000');
 	
 });
-https.listen(8443, function(){
+/*https.listen(8443, function(){
 	console.log('listening ssl on *:8443');
 	
-});
+});*/

@@ -27,12 +27,12 @@
 <script>
   
   var socket = io.connect('http://improveyourself.ru:8000/');
-  var socket = io.connect('https://improveyourself.ru:8443/');
+  //var socket = io.connect('https://improveyourself.ru:8443/');
  
 	var i = 1;
   function clickMe(){
     socket = io.connect('http://improveyourself.ru:8000/');
-    socket = io.connect('https://improveyourself.ru:8443/');
+    //socket = io.connect('https://improveyourself.ru:8443/');
     socket.emit('eventServer', {id: i++, time: (new Date()).valueOf()});
     
     socket.on('eventClient', function (data) {
