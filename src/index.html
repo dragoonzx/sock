@@ -29,10 +29,9 @@ Learn how to configure a non-root public URL by running `npm run build`.
 
 var socket = io.connect('http://improveyourself.ru:8000/');
 var info = '';
-var flag = 
 function changeInfo(value){
 info = value;
-}
+};
 var result = '';
 function clickMe(){
 socket.emit('eventServer', {info: info, time: (new Date()).valueOf()});
