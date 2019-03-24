@@ -34,6 +34,7 @@ info = value;
 };
 var result = '';
 function clickMe(){
+  socket = io.connect('http://improveyourself.ru:8000/');
 socket.emit('eventServer', {info: info, time: (new Date()).valueOf()});
 
 socket.on('eventClient', function (data) {
