@@ -39,10 +39,9 @@ socket.emit('eventServer', {info: info, time: (new Date()).valueOf()});
 socket.on('eventClient', function (data) {
 console.log('client');
 console.log(data);
-for (var i = 0; i < data.length; i++) {
-result = result +'\n' + data.info[i].info;
-}
-alert('Результат: '+ result);
+console.log(data.info);
+console.log(data.info[0]);
+alert('Результат: '+ data.info[0].info);
 socket.disconnect();
 socket.on('disconnect',function(){
 console.log('user disconnected')
