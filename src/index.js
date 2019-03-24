@@ -2,8 +2,14 @@ var app = require('express')();
 //var http = require('http').Server(app);
 var https = require('https').Server(app);
 //var io = require('socket.io')(http);
+const fs = require('fs');
 var io = require('socket.io')(https);
 var a = [0,0];
+
+const options = {
+	key: fs.readFileSync('your_domain.key'),
+	cert: fs.readFileSync('your_domain.crt')
+  };
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -31,7 +37,7 @@ io.sockets.on('connection', function (socket) {
 	console.log('listening on *:8000');
 	
 });*/
-https.listen(8443, function(){
-	console.log('listening ssl on *:8443');
-	
-});
+https.createServer(options, (req, res) => {
+	res.writeHead(200);
+	res.end('hello world\n');
+  }).listen(8000);
