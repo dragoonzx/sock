@@ -1,9 +1,10 @@
-var app = require('express')();
+var express = require('express')();
 //var http = require('http').Server(app);
 var https = require('https').Server(app);
 //var io = require('socket.io')(http);
 const fs = require('fs');
 var io = require('socket.io')(https);
+var app = express();
 var a = [0,0];
 
 const options = {
@@ -37,10 +38,10 @@ io.sockets.on('connection', function (socket) {
 	console.log('listening on *:8000');
 	
 });*/
-var http = app.createServer();
+var http = http.createServer(app);
 register(http);
 http.listen(80);
 
-var https = app.createServer({ key: fs.readFileSync('your_domain.key'), cert: fs.readFileSync('your_domain.crt') });
+var https = https.createServer(app, { key: fs.readFileSync('your_domain.key'), cert: fs.readFileSync('your_domain.crt') });
 register(https);
 https.listen(443);
