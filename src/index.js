@@ -26,7 +26,7 @@ a.push({info:data.info,time:data.time});
 	console.log(3);
 a.push({});
 io.emit('eventClient', { info: a, message: 'передача закончилась' });
-a = {};
+a = [];
 }
 // console.log('u was disco');
 // socket.emit('eventClient', { data: 'Hello Client' + data.time });
@@ -46,5 +46,5 @@ console.log('listening on *:8000');
 // });
 function timeCheck(){
 	io.emit('eventClient', { info: a, message: 'передача закончилась' });
-	a={};
+	a=[];
 }
