@@ -40,7 +40,7 @@ socket.on('eventClient', function (data) {
 console.log('client');
 console.log(data);
 for (var i = 0; i < data.length; i++) {
-result = result +'\n' + data[i].data;
+result = result +'\n' + data[i].info;
 }
 alert('Результат: '+ result);
 socket.disconnect();

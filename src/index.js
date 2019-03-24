@@ -17,14 +17,14 @@ console.log('user connected '+ socket.id);
 console.log(data);
 if (a == false) {
 	console.log(1);
-a.push({data:data.info,time: data.time});
+a.push({info:data.info,time: data.time});
 }else if (a[0].time > data.time - 5000) {
 	console.log(2);
-a.push({data:data.info,time:data.time});
+a.push({info:data.info,time:data.time});
 }else {
 	console.log(3);
 a.push({});
-io.emit('eventClient', { data: a, message: 'передача закончилась' });
+io.emit('eventClient', { info: a, message: 'передача закончилась' });
 a = {};
 }
 // console.log('u was disco');
