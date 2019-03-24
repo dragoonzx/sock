@@ -25,6 +25,7 @@ a.push({data:data.info,time:data.time});
 	console.log(3);
 a.push({});
 io.emit('eventClient', { data: a, message: 'передача закончилась' });
+a = {};
 }
 // console.log('u was disco');
 // socket.emit('eventClient', { data: 'Hello Client' + data.time });

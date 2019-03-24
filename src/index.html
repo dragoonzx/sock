@@ -39,7 +39,7 @@ socket.emit('eventServer', {info: info, time: (new Date()).valueOf()});
 socket.on('eventClient', function (data) {
 console.log('client');
 console.log(data);
-if (data.some(elem => elem.data == info)) {
+if (data[0].some(elem => elem.data == info)) {
 for (var i = 0; i < data.length; i++) {
 if (data[i].length != undefined) {
 result = result +'\n' + data[i].data;
