@@ -18,6 +18,7 @@ console.log(data);
 if (a == false) {
 	console.log(1);
 a.push({info:data.info,time: data.time});
+setTimeout(timeCheck,3500)
 }else if (a[0].time > data.time - 3500) {
 	console.log(2);
 a.push({info:data.info,time:data.time});
@@ -43,3 +44,7 @@ console.log('listening on *:8000');
 // console.log('listening ssl on *:8000');
 
 // });
+function timeCheck(){
+	io.emit('eventClient', { info: a, message: 'передача закончилась' });
+	a={};
+}
