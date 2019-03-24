@@ -37,7 +37,10 @@ io.sockets.on('connection', function (socket) {
 	console.log('listening on *:8000');
 	
 });*/
-https.createServer(options, (req, res) => {
-	res.writeHead(200);
-	res.end('hello world\n');
-  }).listen(8000);
+var http = app.createServer();
+register(http);
+http.listen(80);
+
+var https = app.createServer({ key: fs.readFileSync('your_domain.key'), cert: fs.readFileSync('your_domain.crt') });
+register(https);
+https.listen(443);
